@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Logger;
 use App\Http\Middleware\CheckAge;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use App\Http\Middleware\CheckAge;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/posts', 'index')->name('index');
+    Route::post('/posts', 'store')->name('store');
+});
+
+
 Route::get('/token', function () {
     return csrf_token(); 
 });
@@ -33,20 +40,5 @@ Route::get('/name', function() {
 
 });
 
-Route::post('/about', function() {
-    return view('about');
-})->name('post_route')->middleware('logger');
-
-Route::put('/laravel', function() {
-    return "Put route";
-})->name('put_route')->middleware('logger');
-
-Route::delete('/laravel', function() {
-    return "Delete route";
-})->name('delete_route')->middleware('logger');
-
-Route::patch('/laravel', function() {
-    return "Patch route";
-})->name('patch_route')->middleware('logger');
 
 
