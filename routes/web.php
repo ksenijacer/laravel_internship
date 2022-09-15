@@ -26,8 +26,12 @@ Route::get('/about', function() {
     return view('about');
 
 })->name('get_route')->middleware('logger')->middleware('checkAge');
-// 
 
+Route::get('/name', function() {
+    $first_name = ['first_name' => 'Ksenija'];
+    return view('name', $first_name);
+
+});
 
 Route::post('/about', function() {
     return view('about');
