@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Logger;
+use App\Http\Middleware\CheckAge;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +22,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('laravel', function() {
-    return "Hello World";
-})->name('get_route');;
+Route::get('/about', function() {
+    return view('about');
 
-Route::post('laravel', function() {
-    var_dump("Hello World post route");
-})->name('post_route');;
+})->name('get_route')->middleware('logger')->middleware('checkAge');
+// 
 
-Route::put('laravel', function() {
+
+Route::post('/about', function() {
+    return view('about');
+})->name('post_route')->middleware('logger');
+
+Route::put('/laravel', function() {
     return "Put route";
-})->name('put_route');
+})->name('put_route')->middleware('logger');
 
-Route::delete('laravel', function() {
+Route::delete('/laravel', function() {
     return "Delete route";
-})->name('delete_route');;
+})->name('delete_route')->middleware('logger');
 
-Route::patch('laravel', function() {
+Route::patch('/laravel', function() {
     return "Patch route";
-})->name('patch_route');
+})->name('patch_route')->middleware('logger');
 
 
