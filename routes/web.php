@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Logger;
 use App\Http\Middleware\CheckAge;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/posts', 'index')->name('index');
-    Route::post('/posts', 'store')->name('store');
+    Route::get('/home', 'index')->name('index');
+    Route::post('/home', 'store')->name('store');
 });
 
+Route::controller(PostController::class)->group(function () {
+    Route::get('posts', 'index')->name('index');
+});
 
 Route::get('/token', function () {
     return csrf_token(); 
