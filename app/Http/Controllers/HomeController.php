@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRequest;
-use App\Http\Requests\UpdateRequest;
 
 class HomeController extends Controller
 {
-    public function index() {
-        return response('index');
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function create() {
-        // 
-    }
-
-    public function store(StoreRequest $request) {
-        return response('store');
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
-

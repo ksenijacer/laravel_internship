@@ -181,6 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'Webpatser\Countries\CountriesServiceProvider',
 
         /*
          * Package Service Providers...
@@ -209,6 +210,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Countries' => 'Webpatser\Countries\CountriesFacade',
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

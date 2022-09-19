@@ -6,6 +6,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Country;
+use Database\Seeders\PostSeeder;
+use Database\Seeders\CountriesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        
         User::factory(10)->create();
-        Post::factory(50)->create();
+        $this->call([
+            PostSeeder::class, 
+            CountriesSeeder::class]);
+        $this->command->info('Seeded the countries!'); 
+
     }
 }
