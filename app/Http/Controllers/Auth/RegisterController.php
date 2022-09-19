@@ -80,7 +80,5 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'country' => $data['country'],
         ]);
-
-        return view('register', ['countries' => Countries::all()]);
     }
 }
