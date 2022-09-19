@@ -24,9 +24,6 @@ class PostController extends Controller
             throw new CustomException();
         }
 
-        // if (!isset($some)) {
-        //     throw new CustomException();
-        // }
         return view('posts.index', ['posts' => Post::all()]);
     }
 
