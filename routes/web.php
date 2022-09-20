@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/home', 'index')->name('index');
+    Route::post('/home', 'store')->name('store');
+});
 Route::controller(PostController::class)->group(function () {
     Route::get('posts', 'index')->name('index');
 });

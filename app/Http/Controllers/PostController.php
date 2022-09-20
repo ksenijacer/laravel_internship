@@ -8,6 +8,8 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\Exceptions\CustomException;
+=======
+
 
 class PostController extends Controller
 {
@@ -16,8 +18,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(
         try {
             Post::someFunction();
         } catch (\Exception $e) {
@@ -105,4 +106,7 @@ class PostController extends Controller
         $post->delete();
         return redirect('posts');
     }
+        return response('index');
+    }
+
 }
