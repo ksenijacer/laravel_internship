@@ -182,6 +182,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Webpatser\Countries\CountriesServiceProvider',
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
 
         /*
          * Package Service Providers...
